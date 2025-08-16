@@ -1,45 +1,3 @@
-// import { useState } from "react";
-// import axios from "axios";
-
-// function App() {
-//   const [transcript, setTranscript] = useState("");
-//   const [prompt, setPrompt] = useState("");
-//   const [summary, setSummary] = useState("");
-//   const [email, setEmail] = useState("");
-
-//   const handleSummarize = async () => {
-//     const res = await axios.post("http://localhost:5000/api/summarize", { transcript, prompt });
-//     setSummary(res.data.summary);
-//   };
-
-//   const handleSendEmail = async () => {
-//     await axios.post("http://localhost:5000/api/email", { to: email, summary });
-//     alert("Email Sent!");
-//   };
-
-//   return (
-//     <div style={{ padding: 20 }}>
-//       <h2>AI Meeting Summarizer</h2>
-
-//       <textarea placeholder="Paste Transcript Here..." value={transcript} onChange={(e) => setTranscript(e.target.value)} rows={6} cols={60} />
-//       <br /><br />
-
-//       <input type="text" placeholder="Enter custom instruction..." value={prompt} onChange={(e) => setPrompt(e.target.value)} />
-//       <button onClick={handleSummarize}>Generate Summary</button>
-
-//       <br /><br />
-//       <textarea value={summary} onChange={(e) => setSummary(e.target.value)} rows={6} cols={60} />
-
-//       <br /><br />
-//       <input type="email" placeholder="Recipient Email" value={email} onChange={(e) => setEmail(e.target.value)} />
-//       <button onClick={handleSendEmail}>Send via Email</button>
-//     </div>
-//   );
-// }
-
-// export default App;
-
-
 import { useState, useRef } from "react";
 import axios from "axios";
 import "./App.css";
@@ -75,7 +33,7 @@ export default function App() {
     setNotice("");
     setLoading(true);
     try {
-      const res = await axios.post("http://ai-summary-project-backend.onrender.com/api/summarize", {
+      const res = await axios.post("https://ai-summary-project-backend.onrender.com/api/summarize", {
         transcript,
         prompt: prompt || "Summarize the key decisions, deadlines, and owners in bullet points."
       });
@@ -100,7 +58,7 @@ export default function App() {
     setNotice("");
     setSending(true);
     try {
-      await axios.post("http://ai-summary-project-backend.onrender.com/api/email", {
+      await axios.post("https://ai-summary-project-backend.onrender.com/api/email", {
         to: email,
         summary
       });
