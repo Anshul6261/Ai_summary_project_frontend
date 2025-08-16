@@ -75,7 +75,7 @@ export default function App() {
     setNotice("");
     setLoading(true);
     try {
-      const res = await axios.post("http://localhost:5000/api/summarize", {
+      const res = await axios.post("http://ai-summary-project-backend.onrender.com/api/summarize", {
         transcript,
         prompt: prompt || "Summarize the key decisions, deadlines, and owners in bullet points."
       });
@@ -100,7 +100,7 @@ export default function App() {
     setNotice("");
     setSending(true);
     try {
-      await axios.post("http://localhost:5000/api/email", {
+      await axios.post("http://ai-summary-project-backend.onrender.com/api/email", {
         to: email,
         summary
       });
